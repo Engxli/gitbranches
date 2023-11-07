@@ -1,6 +1,7 @@
 const User = require("../../models/User");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const Tweet = require("../../models/Tweet");
 require("dotenv").config();
 
 const hashPassword = async (password) => {
@@ -14,7 +15,7 @@ const generateToken = (user) => {
   };
 
   const token = jwt.sign(payload, process.env.JWT_PRIVATE_KEY, {
-    expiresIn: "3hr",
+    expiresIn: "5hr",
   });
 
   return token;
